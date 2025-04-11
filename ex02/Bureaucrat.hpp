@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:48:44 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/10 16:35:42 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:13:31 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat{
         void DecrementGrade();
 
         void signForm(Form f);
+        void executeForm(AForm const & form);
         
         class GradeTooHighException: public std::exception{
           public:

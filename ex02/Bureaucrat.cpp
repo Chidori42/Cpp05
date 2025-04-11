@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:54:35 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/10 16:35:02 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:13:37 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void Bureaucrat::signForm(Form f){
         std::cout << this->getName() << " couldn't sign "
             << f.getname() << " because it has an invalid grad" << std::endl;
     }
+}
+
+void Bureaucrat::executeForm(AForm const & form){
+
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw(){

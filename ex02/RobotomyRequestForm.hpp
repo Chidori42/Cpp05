@@ -16,9 +16,13 @@
 #include "Bureaucrat.hpp"
 
 class RobotomyRequestForm{
-    public:
-        std::string name;
     private:
+        std::string name;
+        std::string target;
+        bool isSigned;
+        int gradeToSign;
+        int gradeToExecute;
+    public:
         RobotomyRequestForm();
         RobotomyRequestForm(std::string name);
         ~RobotomyRequestForm();
@@ -26,6 +30,18 @@ class RobotomyRequestForm{
 
         RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
         void execute(Bureaucrat const & executor) const;
+        std::ofstream CreateFileForm();
+        void setTarget(std::string target);
+        std::string getTarget() const;
+        bool getIsSigned() const;
+        int getGradeToSign() const;
+        int getGradeToExecute() const;
+        void setIsSigned(bool isSigned);
+        void setGradeToSign(int gradeToSign);
+        void setGradeToExecute(int gradeToExecute);
+        void setName(std::string name);
+        std::string getName() const;
+        std::string getFormName() const;
 
         class GradeTooHighException: public std::exception{
           public:
@@ -35,6 +51,10 @@ class RobotomyRequestForm{
         class GradeTooLowException: public std::exception{
           public:
             const char* what() const throw();
+        };
+        class FormNotSignedException: public std::exception{
+            public:
+                const char* what() const throw();
         };
 };
 

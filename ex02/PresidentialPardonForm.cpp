@@ -12,23 +12,29 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(){
+PresidentialPardonForm::PresidentialPardonForm(): name("Default"){
     
 }
 PresidentialPardonForm::PresidentialPardonForm(std::string name){
-    
+    this->name = name;
 }
 PresidentialPardonForm::~PresidentialPardonForm(){
     
 }
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other){
-
+    this->name = other.name;
 }
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &other){
-    
+    if (this != &other){
+        this->name = other.name;
+    }
+    return *this;
 }
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
-    
+    if (executor.getGrade() > 25){
+        throw GradeTooLowException();
+    }
+    std::cout << this->name << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 const char *PresidentialPardonForm::GradeTooHighException::what() const throw(){

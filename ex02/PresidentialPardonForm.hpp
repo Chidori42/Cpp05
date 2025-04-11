@@ -16,9 +16,9 @@
 #include "Bureaucrat.hpp"
 
 class PresidentialPardonForm{
-    public:
-        std::string name;
     private:
+        std::string name;
+    public:
         PresidentialPardonForm();
         PresidentialPardonForm(std::string name);
         ~PresidentialPardonForm();

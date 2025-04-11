@@ -76,7 +76,9 @@
         "complex": "cpp",
         "ios": "cpp",
         "locale": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "fstream": "cpp",
+        "stack": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

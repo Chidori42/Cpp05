@@ -23,14 +23,15 @@ class AForm{
         const int gradexecute;
     public:
         AForm();
-        ~AForm();
-        AForm(std::string name) = 0;
+        virtual ~AForm() = 0;
+        AForm(std::string name);
         
         std::string getname() const;
         bool getWassigned() const;
         int getGradsign() const;
         int getGradexecute() const;
         void beSigned(Bureaucrat br);
+        virtual void execute(Bureaucrat const &executor) const = 0;
     
         class GradeTooHighException: public std::exception{
             public:
@@ -42,6 +43,6 @@ class AForm{
             const char* what() const throw();
         };
 };
-std::ostream &operator<<(std::ostream &os, AForm const &other);
+// std::ostream &operator<<(std::ostream &os, AForm const &other);
 
 #endif

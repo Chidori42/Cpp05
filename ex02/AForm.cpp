@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:46:23 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/10 18:09:56 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 22:31:47 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ AForm::AForm(std::string name): name(name), wassigned(false), gradsign(2), grade
     else if (getGradsign() < 1)
         throw GradeTooHighException();
 }
-        
-std::ostream &operator<<(std::ostream &os, AForm const &other){
-    os << other.getname() << ", Gradsign is "
-        << other.getGradsign() << ", Gradeexecute is "
-        << other.getGradexecute() << std::endl;
-    return os;
-}
 
 std::string AForm::getname() const{
     return (this->name);
@@ -49,8 +42,14 @@ int AForm::getGradexecute() const{
 }
 
 void AForm::beSigned(Bureaucrat br){
-    if (getGradsign() <= br.getGrade())
+    if (br.getGrade() <= getGradsign())
         this->wassigned = true;
+    else
+        throw GradeTooLowException();
+}
+void AForm::execute(Bureaucrat const &executor) const{
+    if (executor.getGrade() <= getGradexecute())
+        std::cout << "The Form Is Executed" << std::endl;
     else
         throw GradeTooLowException();
 }

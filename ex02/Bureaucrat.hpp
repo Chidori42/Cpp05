@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:48:44 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 16:13:31 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 23:09:14 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
-#include "Form.hpp"
-class Form;
+#include "AForm.hpp"
+class AForm;
 class Bureaucrat{
     private:
       const std::string name;
       int grad;
     public:
         Bureaucrat();
-        Bureaucrat(std::string name);
+        Bureaucrat(std::string name, int grad);
         ~Bureaucrat();
         Bureaucrat(Bureaucrat const &other);
 
@@ -35,7 +35,7 @@ class Bureaucrat{
         void IncrementGrade();
         void DecrementGrade();
 
-        void signForm(Form f);
+        void signForm(AForm f);
         void executeForm(AForm const & form);
         
         class GradeTooHighException: public std::exception{

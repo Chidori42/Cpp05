@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:54:35 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 16:13:37 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 23:17:25 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(): name("Default"), grad(2){
         throw GradeTooHighException();
     std::cout << "Bureaucrat Constructor Called" << std::endl;
 }
-Bureaucrat::Bureaucrat(std::string name) : name(name), grad(2){
+Bureaucrat::Bureaucrat(std::string name, int grad) : name(name), grad(grad){
     if (getGrade() > 150)
         throw GradeTooLowException();
     else if (getGrade() < 1)
@@ -56,31 +56,37 @@ void Bureaucrat::setGrade(int grad){
     this->grad = grad;
 }
 
-void Bureaucrat::IncrementGrade(){
-    if (this->grad + 1 > 150)
-        throw GradeTooLowException();
-    this->grad++;
-}
-void Bureaucrat::DecrementGrade(){
+void Bureaucrat::IncrementGrade() {
     if (this->grad - 1 < 1)
         throw GradeTooHighException();
     this->grad--;
 }
 
-void Bureaucrat::signForm(Form f){
-    f.beSigned(*this);
-    if (f.getWassigned()){
+void Bureaucrat::DecrementGrade() {
+    if (this->grad + 1 > 150)
+        throw GradeTooLowException();
+    this->grad++;
+}
+
+void Bureaucrat::signForm(AForm f){
+    try {
+        f.beSigned(*this);
         std::cout << this->getName() << " signed " << f.getname() << std::endl;
-    }
-    else
-    {
-        std::cout << this->getName() << " couldn't sign "
-            << f.getname() << " because it has an invalid grad" << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << this->getName() << " couldn't sign " << f.getname()
+                  << " because " << e.what() << std::endl;
     }
 }
 
-void Bureaucrat::executeForm(AForm const & form){
-
+void Bureaucrat::executeForm(AForm const & form)
+{
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getname() << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << this->getName() << " couldn't execute " << form.getname()
+                  << " because " << e.what() << std::endl;
+    }
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw(){

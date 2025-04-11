@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:28:45 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 16:17:00 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 23:16:29 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "Bureaucrat.hpp"
+#include <fstream>
 
-class RobotomyRequestForm{
+class RobotomyRequestForm : public AForm{
     private:
         std::string name;
         std::string target;
@@ -43,6 +44,9 @@ class RobotomyRequestForm{
         std::string getName() const;
         std::string getFormName() const;
 
+        void beSigned(Bureaucrat br);
+        void executeForm(Bureaucrat const & executor) const;
+
         class GradeTooHighException: public std::exception{
           public:
             const char* what() const throw();
@@ -57,5 +61,7 @@ class RobotomyRequestForm{
                 const char* what() const throw();
         };
 };
+
+std::ostream &operator<<(std::ostream &os, RobotomyRequestForm const &other);
 
 #endif

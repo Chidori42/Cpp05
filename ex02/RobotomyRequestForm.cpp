@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:15:21 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 16:17:49 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 23:16:50 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,22 @@ std::string RobotomyRequestForm::getName() const{
 std::string RobotomyRequestForm::getFormName() const{
     return this->name;
 }
+
+void RobotomyRequestForm::beSigned(Bureaucrat br){
+    if (br.getGrade() <= this->gradeToSign){
+        this->isSigned = true;
+    }
+    else{
+        throw GradeTooLowException();
+    }
+}
+void RobotomyRequestForm::executeForm(Bureaucrat const & executor) const{
+    try {
+        this->execute(executor);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+}
 std::ofstream RobotomyRequestForm::CreateFileForm(){
     std::ofstream file;
     file.open(this->name + "_shrubbery");
@@ -98,4 +114,13 @@ std::ofstream RobotomyRequestForm::CreateFileForm(){
         file << "ASCII art of a shrubbery" << std::endl;
     }
     return file;
+}
+
+std::ostream &RobotomyRequestForm::operator<<(std::ostream &os, RobotomyRequestForm const &other){
+    os << other.getName() << ", Target is "
+        << other.getTarget() << ", IsSigned is "
+        << other.getIsSigned() << ", GradeToSign is "
+        << other.getGradeToSign() << ", GradeToExecute is "
+        << other.getGradeToExecute() << std::endl;
+    return os;
 }

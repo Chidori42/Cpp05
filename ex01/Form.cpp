@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:46:23 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/10 18:09:56 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/11 22:41:06 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Form::Form(): name("wati9a"), wassigned(false), gradsign(1), gradexecute(1){
 Form::~Form(){
 
 }
-Form::Form(std::string name): name(name), wassigned(false), gradsign(2), gradexecute(2){
+Form::Form(std::string name): name(name), wassigned(false), gradsign(1), gradexecute(2){
     if (getGradsign() > 150)
         throw GradeTooLowException();
     else if (getGradsign() < 1)
@@ -49,7 +49,7 @@ int Form::getGradexecute() const{
 }
 
 void Form::beSigned(Bureaucrat br){
-    if (getGradsign() <= br.getGrade())
+    if (br.getGrade() <= getGradsign())
         this->wassigned = true;
     else
         throw GradeTooLowException();

@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:28:45 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 23:16:29 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:13:43 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,18 @@
 
 #include "Bureaucrat.hpp"
 #include <fstream>
+#include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm{
-    private:
-        std::string name;
-        std::string target;
-        bool isSigned;
-        int gradeToSign;
-        int gradeToExecute;
     public:
         RobotomyRequestForm();
-        RobotomyRequestForm(std::string name);
         ~RobotomyRequestForm();
         RobotomyRequestForm(RobotomyRequestForm const &other);
 
         RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
         void execute(Bureaucrat const & executor) const;
-        std::ofstream CreateFileForm();
-        void setTarget(std::string target);
-        std::string getTarget() const;
-        bool getIsSigned() const;
-        int getGradeToSign() const;
-        int getGradeToExecute() const;
-        void setIsSigned(bool isSigned);
-        void setGradeToSign(int gradeToSign);
-        void setGradeToExecute(int gradeToExecute);
-        void setName(std::string name);
-        std::string getName() const;
-        std::string getFormName() const;
-
-        void beSigned(Bureaucrat br);
-        void executeForm(Bureaucrat const & executor) const;
+        void CreateFileForm();
+  
 
         class GradeTooHighException: public std::exception{
           public:
@@ -61,7 +42,5 @@ class RobotomyRequestForm : public AForm{
                 const char* what() const throw();
         };
 };
-
-std::ostream &operator<<(std::ostream &os, RobotomyRequestForm const &other);
 
 #endif

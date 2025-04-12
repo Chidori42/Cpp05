@@ -6,47 +6,37 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:15:21 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 23:16:50 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:13:35 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(): name("Default"){
+RobotomyRequestForm::RobotomyRequestForm(){
     
-}
-RobotomyRequestForm::RobotomyRequestForm(std::string name){
-    this->name = name;
 }
 RobotomyRequestForm::~RobotomyRequestForm(){
     
 }
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other){
-    this->name = other.name;
-    this->target = other.target;
-    this->isSigned = other.isSigned;
-    this->gradeToSign = other.gradeToSign;
-    this->gradeToExecute = other.gradeToExecute;
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : AForm(other){
+    *this = other;
 }
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &other){
-    if (this != &other){
-        this->name = other.name;
-        this->target = other.target;
-        this->isSigned = other.isSigned;
-        this->gradeToSign = other.gradeToSign;
-        this->gradeToExecute = other.gradeToExecute;
-    }
+    if (this == &other)
+        return *this; 
     return *this;
 }
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
-    if (executor.getGrade() > this->gradeToExecute){
+    if (executor.getGrade() > AForm::getGradexecute()){
         throw GradeTooLowException();
     }
-    if (this->isSigned == false){
+    if (AForm::getWassigned() == false){
         throw FormNotSignedException();
     }
-    std::cout << "Beeeeeep boop beep! " << this->target
-    << " has been robotomized successfully 50% of the time." << std::endl;
+    if (executor.getGrade() == 45 && AForm::getGradsign() == 72){
+        std::cout << "Beeeeeep boop beep! " << AForm::getname()
+            << " is being robotomized..." << std::endl;
+    }
 }
 
 const char *RobotomyRequestForm::GradeTooHighException::what() const throw(){
@@ -58,69 +48,10 @@ const char *RobotomyRequestForm::GradeTooLowException::what() const throw(){
 const char *RobotomyRequestForm::FormNotSignedException::what() const throw(){
     return "The RobotomyRequestForm Is Not Signed";
 }
-void RobotomyRequestForm::setTarget(std::string target){
-    this->target = target;
-}
-std::string RobotomyRequestForm::getTarget() const{
-    return this->target;
-}
-bool RobotomyRequestForm::getIsSigned() const{
-    return this->isSigned;
-}
-int RobotomyRequestForm::getGradeToSign() const{
-    return this->gradeToSign;
-}
-int RobotomyRequestForm::getGradeToExecute() const{
-    return this->gradeToExecute;
-}
-void RobotomyRequestForm::setIsSigned(bool isSigned){
-    this->isSigned = isSigned;
-}
-void RobotomyRequestForm::setGradeToSign(int gradeToSign){
-    this->gradeToSign = gradeToSign;
-}
-void RobotomyRequestForm::setGradeToExecute(int gradeToExecute){
-    this->gradeToExecute = gradeToExecute;
-}
-void RobotomyRequestForm::setName(std::string name){
-    this->name = name;
-}
-std::string RobotomyRequestForm::getName() const{
-    return this->name;
-}
-std::string RobotomyRequestForm::getFormName() const{
-    return this->name;
-}
-
-void RobotomyRequestForm::beSigned(Bureaucrat br){
-    if (br.getGrade() <= this->gradeToSign){
-        this->isSigned = true;
-    }
-    else{
-        throw GradeTooLowException();
-    }
-}
-void RobotomyRequestForm::executeForm(Bureaucrat const & executor) const{
-    try {
-        this->execute(executor);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
-}
-std::ofstream RobotomyRequestForm::CreateFileForm(){
-    std::ofstream file;
-    file.open(this->name + "_shrubbery");
-    if (file.is_open()){
+void RobotomyRequestForm::CreateFileForm(){
+    std::ofstream file(AForm::getname() + "_shrubbery");
+    if (file.is_open()) {
         file << "ASCII art of a shrubbery" << std::endl;
+        file.close();
     }
-    return file;
-}
-
-std::ostream &RobotomyRequestForm::operator<<(std::ostream &os, RobotomyRequestForm const &other){
-    os << other.getName() << ", Target is "
-        << other.getTarget() << ", IsSigned is "
-        << other.getIsSigned() << ", GradeToSign is "
-        << other.getGradeToSign() << ", GradeToExecute is "
-        << other.getGradeToExecute() << std::endl;
-    return os;
 }

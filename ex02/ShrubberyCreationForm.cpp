@@ -6,54 +6,40 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:26:24 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 16:18:11 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:19:49 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : name("Default"){
-    
-}
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name){
-    this->name = name;
+ShrubberyCreationForm::ShrubberyCreationForm(){
 }
 ShrubberyCreationForm::~ShrubberyCreationForm(){
     
 }
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other){
-    this->name = other.name;
-    this->target = other.target;
-    this->isSigned = other.isSigned;
-    this->gradeToSign = other.gradeToSign;
-    this->gradeToExecute = other.gradeToExecute;
-    this->CreateFileForm();
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other){
+    *this = other;
 }
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other){
-    if (this != &other){
-        this->name = other.name;
-        this->target = other.target;
-        this->isSigned = other.isSigned;
-        this->gradeToSign = other.gradeToSign;
-        this->gradeToExecute = other.gradeToExecute;
-    }
+    if (this == &other)
+        return *this; 
     return *this;
 }
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-    if (executor.getGrade() > this->gradeToExecute){
+    if (executor.getGrade() > AForm::getGradexecute()){
         throw GradeTooLowException();
     }
-    if (this->isSigned == false){
+    if (AForm::getWassigned() == false){
         throw FormNotSignedException();
     }
     CreateFileForm();
-    std::cout << "ShrubberyCreationForm: " << this->target
-    << " has been created successfully." << std::endl;
+    std::cout << "ShrubberyCreationForm: " << AForm::getname()
+        << " has been executed by " << executor.getName() << std::endl;
 
 }
-std::ofstream ShrubberyCreationForm::CreateFileForm(){
+void ShrubberyCreationForm::CreateFileForm() const{
     std::ofstream file;
-    file.open(this->target + "_shrubbery");
+    file.open(AForm::getname() + "_shrubbery");
     if (file.is_open()){
         file << "       _-_\n";
         file << "    _-_-_-_\n";
@@ -66,7 +52,6 @@ std::ofstream ShrubberyCreationForm::CreateFileForm(){
     } else {
         std::cerr << "Error: Unable to open file." << std::endl;
     }
-    return file;
 }
 
 const char *ShrubberyCreationForm::GradeTooHighException::what() const throw(){
@@ -74,4 +59,7 @@ const char *ShrubberyCreationForm::GradeTooHighException::what() const throw(){
 }
 const char *ShrubberyCreationForm::GradeTooLowException::what() const throw(){
     return "The ShrubberyCreationForm Grade Is To Low";
+}
+const char *ShrubberyCreationForm::FormNotSignedException::what() const throw(){
+    return "The ShrubberyCreationForm Is Not Signed";
 }

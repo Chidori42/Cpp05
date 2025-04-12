@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:29:26 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 16:13:54 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/12 18:42:45 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include "Bureaucrat.hpp"
+#include <fstream>
+#include "AForm.hpp"
 
-class PresidentialPardonForm{
-    private:
-        std::string name;
+class PresidentialPardonForm : public AForm{
     public:
         PresidentialPardonForm();
-        PresidentialPardonForm(std::string name);
         ~PresidentialPardonForm();
         PresidentialPardonForm(PresidentialPardonForm const &other);
 

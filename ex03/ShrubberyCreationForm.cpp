@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:26:24 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 22:27:52 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): target(target)
 ShrubberyCreationForm::~ShrubberyCreationForm(){
     
 }
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other){
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : Form(other){
     *this = other;
 }
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other){
@@ -28,10 +28,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
     if (this->getGradsign() > 145 || this->getGradexecute() > 137)
         throw GradeTooLowException();
-    if (AForm::getWassigned() == false)
+    if (Form::getWassigned() == false)
         throw FormNotSignedException();
     CreateFileForm();
-    std::cout << "ShrubberyCreationForm: " << AForm::getname()
+    std::cout << "ShrubberyCreationForm: " << Form::getname()
         << " has been executed by " << executor.getName() << std::endl;
 
 }

@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:54:35 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 19:09:07 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/16 23:45:13 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void Bureaucrat::DecrementGrade() {
     this->grad++;
 }
 
-void Bureaucrat::signForm(AForm &f){
+void Bureaucrat::signForm(Form &f){
     try {
         f.beSigned(*this);
         std::cout << this->getName() << " signed " << f.getname() << std::endl;
@@ -78,7 +78,7 @@ void Bureaucrat::signForm(AForm &f){
     }
 }
 
-void Bureaucrat::executeForm(AForm const & form)
+void Bureaucrat::executeForm(Form const & form)
 {
     try {
         form.execute(*this);

@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:13:56 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 22:25:29 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): target(targe
 PresidentialPardonForm::~PresidentialPardonForm(){
     
 }
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : AForm(other){
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : Form(other){
     *this = other;
 }
 
@@ -28,7 +28,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
     return *this;
 }
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
-    if (AForm::getWassigned() == false)
+    if (Form::getWassigned() == false)
         throw FormNotSignedException();
     if (executor.getGrade() > 25 || this->getGradexecute() > 5)
         throw GradeTooLowException();

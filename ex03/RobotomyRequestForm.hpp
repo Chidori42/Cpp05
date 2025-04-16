@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:28:45 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 22:26:16 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class RobotomyRequestForm : public AForm{
+class RobotomyRequestForm : public Form{
     private:
       std::string target;
     public:

@@ -9,7 +9,7 @@ int main(){
         Bureaucrat br("Ael-Fagr", 1);
         Bureaucrat br2("Ael-Fagr", 150);
         ShrubberyCreationForm form("target");
-        // form.beSigned(br);
+        form.beSigned(br);
         std::cout << form << std::endl;
         br.executeForm(form);
     }

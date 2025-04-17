@@ -12,7 +12,7 @@
 
 #include "Form.hpp"
 
-Form::Form(): name("wati9a"), wassigned(false), gradsign(1), gradexecute(1){
+Form::Form(): name("wati9a"), wassigned(false), gradsign(2), gradexecute(2){
     if (getGradsign() > 150)
         throw GradeTooLowException();
     else if (getGradsign() < 1)

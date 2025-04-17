@@ -29,7 +29,7 @@ class RobotomyRequestForm : public Form{
 
         RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
         void execute(Bureaucrat const & executor) const;
-        Form* create(std::string target);
+        static  Form* create(std::string target);
         
         std::string getTarget() const;
         class GradeTooHighException: public std::exception{

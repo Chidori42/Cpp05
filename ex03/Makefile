@@ -8,7 +8,7 @@ SRCS =	main.cpp\
 		Intern.cpp
 		
 
-NAME = Form_upgrade
+NAME = Make_Forms
 
 OBJECTS = $(SRCS:.cpp=.o)
 

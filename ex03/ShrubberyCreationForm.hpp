@@ -29,7 +29,7 @@ class ShrubberyCreationForm : public Form{
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         void execute(Bureaucrat const & executor) const;
         void CreateFileForm() const;
-        Form* create(std::string target);
+        static  Form* create(std::string target);
 
         std::string getTarget() const;
 

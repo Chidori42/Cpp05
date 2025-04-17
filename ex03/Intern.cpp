@@ -20,30 +20,40 @@ Intern::~Intern(){
     
 }
 Intern::Intern(Intern const &other){
-    
+    *this = other;
 }
 Intern &Intern::operator=(Intern const &other){
-    
-}
+    (void)other;
+    return *this;
+}   
+
 
 Form* Intern::makeForm(std::string formName, std::string formTarget) {
-    std::string Names[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-    
-    Form* (*functionTable[3])(std::string) = {
+    if (formName.empty()) {
+        std::cout << "Form name is empty." << std::endl;
+        return NULL;
+    }
+
+    std::string Names[3] = {"presidential pardon request", "robotomy request", "shrubbery creation request"};
+    Form* (*functions[3])(std::string) = {
         &PresidentialPardonForm::create,
         &RobotomyRequestForm::create,
         &ShrubberyCreationForm::create
     };
-    
-
+    Form* form = NULL;
     for (int i = 0; i < 3; i++) {
-        if (Names[i] == formName) {
-            std::cout << "Intern creates " << formName << std::endl;
-            return functionTable[i](formTarget);
-
+        if (formName == Names[i]){
+            form = functions[i](formTarget);
+            break;
         }
     }
-    
-    std::cout << "Form with name " << formName << " not found." << std::endl;
-    return NULL;
+    if (!form) {
+        throw FormNotFoundException();
+    }
+    std::cout << "Intern creates " << form->getname() << std::endl;
+    return form;
+}
+
+const char *Intern::FormNotFoundException::what() const throw(){
+    return "The Form Was Not Found";
 }

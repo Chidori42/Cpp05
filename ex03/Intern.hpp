@@ -14,15 +14,27 @@
 #define INTERN_HPP
 
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
+#include <iostream>
+#include <string>
+#include <exception>
 
-class Intern: public PresidentialPardonForm, RobotomyRequestForm, ShrubberyCreationForm{
+class Intern
+{
     public:
         Intern();
-        ~Intern();
         Intern(Intern const &other);
-    
+        ~Intern();
         Intern &operator=(Intern const &other);
-        Form* makeForm(std::string formName, std::string formTarget);
+        Form *makeForm(std::string formName, std::string target);
+        class FormNotFoundException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
 };
 
 #endif

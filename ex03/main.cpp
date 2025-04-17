@@ -8,9 +8,10 @@
 int main(){
     try{
         Intern someRandomIntern;
-        Bureaucrat executor;
+        Bureaucrat executor("lhaj l3arbi", 2);
         Form* rrf;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+        rrf = someRandomIntern.makeForm("shrubbery creation request", "Bender");
+        rrf->beSigned(executor);
         rrf->execute(executor);
     }
     catch (std::exception &e){

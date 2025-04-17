@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:13:56 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:31:33 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
 
 std::string PresidentialPardonForm::getTarget() const{
     return (this->target);
+}
+
+Form* PresidentialPardonForm::create(std::string target) {
+    return new PresidentialPardonForm(target);
 }
 
 const char *PresidentialPardonForm::GradeTooHighException::what() const throw(){

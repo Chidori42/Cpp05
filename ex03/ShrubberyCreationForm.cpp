@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:26:24 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:32:58 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void ShrubberyCreationForm::CreateFileForm() const{
 
 std::string ShrubberyCreationForm::getTarget() const{
     return (this->target);
+}
+
+Form* ShrubberyCreationForm::create(std::string target){
+    return new ShrubberyCreationForm(target);
 }
 
 const char *ShrubberyCreationForm::GradeTooHighException::what() const throw(){

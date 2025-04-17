@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:15:21 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:32:18 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 
 std::string RobotomyRequestForm::getTarget() const{
     return (this->target);
+}
+
+Form* RobotomyRequestForm::create(std::string target){
+    return new RobotomyRequestForm(target);
 }
 
 

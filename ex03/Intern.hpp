@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 22:05:13 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/17 00:01:38 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:34:26 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Form.hpp"
 
-class Intern{
+class Intern: public PresidentialPardonForm, RobotomyRequestForm, ShrubberyCreationForm{
     public:
         Intern();
         ~Intern();
@@ -23,6 +23,6 @@ class Intern{
     
         Intern &operator=(Intern const &other);
         Form* makeForm(std::string formName, std::string formTarget);
-}
+};
 
 #endif

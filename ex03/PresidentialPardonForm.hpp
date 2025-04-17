@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:29:26 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:31:42 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class PresidentialPardonForm : public Form{
         PresidentialPardonForm(PresidentialPardonForm const &other);
 
         PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
+        Form* create(std::string target);
         void execute(Bureaucrat const & executor) const;
 
         std::string getTarget() const;

@@ -6,11 +6,12 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:15:21 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/17 16:32:18 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/18 17:00:16 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target): target(target){
     
@@ -33,14 +34,16 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
     if (this->getWassigned() == false){
         throw FormNotSignedException();
     }
-    if (executor.getGrade() == 45 && this->getGradsign() == 72){
-        if (rand() % 2 == 1){
-            std::cout << "Beeeeeep boop beep! " << this->getTarget()
-                << " is being robotomized..." << std::endl;
-        }
-        else{
-            std::cout << "The robotomy failed" << std::endl;
-        }
+    if (executor.getGrade() > this->getGradexecute()){
+        throw GradeTooLowException();
+    }
+    float randNum = time(0) % 2;
+    if (randNum == 0){
+        std::cout << "Beeeeeep boop beep! " << this->getTarget()
+            << " is being robotomized..." << std::endl;
+    }
+    else{
+        std::cout << "The robotomy failed" << std::endl;
     }
 }
 

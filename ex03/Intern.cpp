@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 00:01:41 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/17 16:36:05 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:30:08 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Form* Intern::makeForm(std::string formName, std::string formTarget) {
         return NULL;
     }
 
-    std::string Names[3] = {"presidential pardon request", "robotomy request", "shrubbery creation request"};
+    std::string Names[3] = {"presidentialpardon request", "robotomy request", "shrubberycreation request"};
     Form* (*functions[3])(std::string) = {
         &PresidentialPardonForm::create,
         &RobotomyRequestForm::create,

@@ -10,7 +10,7 @@ int main(){
         Intern someRandomIntern;
         Bureaucrat executor("lhaj l3arbi", 2);
         Form* rrf;
-        rrf = someRandomIntern.makeForm("shrubbery creation request", "Bender");
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
         rrf->beSigned(executor);
         rrf->execute(executor);
     }

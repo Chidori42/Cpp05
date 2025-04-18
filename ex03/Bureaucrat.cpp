@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:54:35 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 23:45:13 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/18 16:48:25 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,4 @@ const char *Bureaucrat::GradeTooHighException::what() const throw(){
 const char *Bureaucrat::GradeTooLowException::what() const throw(){
     return "The Grade Is To Low";
 }
+

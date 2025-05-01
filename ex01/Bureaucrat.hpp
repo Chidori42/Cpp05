@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:48:44 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/10 16:35:42 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/01 10:46:47 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat{
       int grad;
     public:
         Bureaucrat();
-        Bureaucrat(std::string name);
+        Bureaucrat(std::string name, int grad);
         ~Bureaucrat();
         Bureaucrat(Bureaucrat const &other);
 

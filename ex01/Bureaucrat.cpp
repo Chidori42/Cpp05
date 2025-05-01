@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:54:35 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 22:43:29 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/01 10:46:19 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(): name("Default"), grad(2){
         throw GradeTooHighException();
     std::cout << "Bureaucrat Constructor Called" << std::endl;
 }
-Bureaucrat::Bureaucrat(std::string name) : name(name), grad(1){
+Bureaucrat::Bureaucrat(std::string name, int grad) : name(name), grad(grad){
     if (getGrade() > 150)
         throw GradeTooLowException();
     else if (getGrade() < 1)

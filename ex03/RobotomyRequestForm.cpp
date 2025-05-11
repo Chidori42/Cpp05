@@ -19,7 +19,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): target(target){
 RobotomyRequestForm::~RobotomyRequestForm(){
     
 }
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : Form(other){
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) : AForm(other){
     *this = other;
 }
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &other){
@@ -51,7 +51,7 @@ std::string RobotomyRequestForm::getTarget() const{
     return (this->target);
 }
 
-Form* RobotomyRequestForm::create(std::string target){
+AForm* RobotomyRequestForm::create(std::string target){
     return new RobotomyRequestForm(target);
 }
 

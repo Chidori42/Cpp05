@@ -17,9 +17,9 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class RobotomyRequestForm : public Form{
+class RobotomyRequestForm : public AForm{
     private:
       std::string target;
     public:
@@ -29,7 +29,7 @@ class RobotomyRequestForm : public Form{
 
         RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
         void execute(Bureaucrat const & executor) const;
-        static  Form* create(std::string target);
+        static  AForm* create(std::string target);
         
         std::string getTarget() const;
         class GradeTooHighException: public std::exception{

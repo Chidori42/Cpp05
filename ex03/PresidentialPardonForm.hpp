@@ -15,9 +15,9 @@
 
 #include "Bureaucrat.hpp"
 #include <fstream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class PresidentialPardonForm : public Form{
+class PresidentialPardonForm : public AForm{
   private:
       std::string target;
     public:
@@ -26,7 +26,7 @@ class PresidentialPardonForm : public Form{
         PresidentialPardonForm(PresidentialPardonForm const &other);
 
         PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
-        static Form* create(std::string target);
+        static AForm* create(std::string target);
         void execute(Bureaucrat const & executor) const;
 
         std::string getTarget() const;

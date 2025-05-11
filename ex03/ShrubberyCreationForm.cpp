@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): target(target)
 ShrubberyCreationForm::~ShrubberyCreationForm(){
     
 }
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : Form(other){
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other){
     *this = other;
 }
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other){
@@ -28,10 +28,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
     if (this->getGradsign() > 145 || this->getGradexecute() > 137)
         throw GradeTooLowException();
-    if (Form::getWassigned() == false)
+    if (AForm::getWassigned() == false)
         throw FormNotSignedException();
     CreateFileForm();
-    std::cout << "ShrubberyCreationForm: " << Form::getname()
+    std::cout << "ShrubberyCreationForm: " << AForm::getname()
         << " has been executed by " << executor.getName() << std::endl;
 
 }
@@ -67,7 +67,7 @@ std::string ShrubberyCreationForm::getTarget() const{
     return (this->target);
 }
 
-Form* ShrubberyCreationForm::create(std::string target){
+AForm* ShrubberyCreationForm::create(std::string target){
     return new ShrubberyCreationForm(target);
 }
 

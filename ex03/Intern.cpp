@@ -28,19 +28,19 @@ Intern &Intern::operator=(Intern const &other){
 }   
 
 
-Form* Intern::makeForm(std::string formName, std::string formTarget) {
+AForm* Intern::makeForm(std::string formName, std::string formTarget) {
     if (formName.empty()) {
         std::cout << "Form name is empty." << std::endl;
         return NULL;
     }
 
     std::string Names[3] = {"presidentialpardon request", "robotomy request", "shrubberycreation request"};
-    Form* (*functions[3])(std::string) = {
+    AForm* (*functions[3])(std::string) = {
         &PresidentialPardonForm::create,
         &RobotomyRequestForm::create,
         &ShrubberyCreationForm::create
     };
-    Form* form = NULL;
+    AForm* form = NULL;
     for (int i = 0; i < 3; i++) {
         if (formName == Names[i]){
             form = functions[i](formTarget);

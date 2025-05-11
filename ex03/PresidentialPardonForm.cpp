@@ -18,7 +18,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): target(targe
 PresidentialPardonForm::~PresidentialPardonForm(){
     
 }
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : Form(other){
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) : AForm(other){
     *this = other;
 }
 
@@ -28,7 +28,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
     return *this;
 }
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
-    if (Form::getWassigned() == false)
+    if (AForm::getWassigned() == false)
         throw FormNotSignedException();
     if (executor.getGrade() > 25 || this->getGradexecute() > 5)
         throw GradeTooLowException();
@@ -39,7 +39,7 @@ std::string PresidentialPardonForm::getTarget() const{
     return (this->target);
 }
 
-Form* PresidentialPardonForm::create(std::string target) {
+AForm* PresidentialPardonForm::create(std::string target) {
     return new PresidentialPardonForm(target);
 }
 

@@ -21,7 +21,7 @@ AForm::AForm(): name("wati9a"), wassigned(false), gradsign(1), gradexecute(1){
 AForm::~AForm(){
 
 }
-AForm::AForm(std::string name): name(name), wassigned(false), gradsign(2), gradexecute(2){
+AForm::AForm(std::string name, int gradsign, int gradexecute): name(name), wassigned(false), gradsign(gradsign), gradexecute(gradexecute){
     if (getGradsign() > 150)
         throw GradeTooLowException();
     else if (getGradsign() < 1)

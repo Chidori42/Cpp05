@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:41:09 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 23:47:53 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:43:59 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Form_HPP
-#define Form_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 class Bureaucrat;
-class Form{
+class AForm{
     private:
         const std::string name;
         bool wassigned;
         const int gradsign;
         const int gradexecute;
     public:
-        Form();
-        ~Form();
-        Form(std::string name);
+        AForm();
+        ~AForm();
+        AForm(std::string name, int gradsign, int gradexecute);
         
         std::string getname() const;
         bool getWassigned() const;
@@ -43,6 +43,6 @@ class Form{
             const char* what() const throw();
         };
 };
-std::ostream &operator<<(std::ostream &os, Form const &other);
+std::ostream &operator<<(std::ostream &os, AForm const &other);
 
 #endif

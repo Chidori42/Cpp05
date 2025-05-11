@@ -24,7 +24,7 @@ class AForm{
     public:
         AForm();
         ~AForm();
-        AForm(std::string name);
+        AForm(std::string name, int gradsign, int gradexecute);
         
         std::string getname() const;
         bool getWassigned() const;

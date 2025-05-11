@@ -24,7 +24,7 @@ class Form{
     public:
         Form();
         ~Form();
-        Form(std::string name);
+        Form(std::string name, int gradsign, int gradexecute);
         
         std::string getname() const;
         bool getWassigned() const;

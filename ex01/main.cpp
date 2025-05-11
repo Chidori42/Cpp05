@@ -16,7 +16,7 @@ int main()
 {
     try{
         Bureaucrat dahmad("dahmad", 15);
-        Form wati9a("wati9a");
+        Form wati9a("wati9a", 2, 2);
 
         dahmad.DecrementGrade();
         dahmad.signForm(wati9a);

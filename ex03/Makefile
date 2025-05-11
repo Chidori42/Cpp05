@@ -1,7 +1,7 @@
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS =	main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp\
+		AForm.cpp\
 		PresidentialPardonForm.cpp\
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp\
@@ -16,7 +16,7 @@ RM = rm -f
 
 all: $(NAME)
 
-%.o: %.cpp  Form.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
+%.o: %.cpp  AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
 	c++ $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJECTS)

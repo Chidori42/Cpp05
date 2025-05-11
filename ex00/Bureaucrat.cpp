@@ -52,9 +52,6 @@ std::string Bureaucrat::getName() const{
 int Bureaucrat::getGrade() const{
     return (this->grad);
 }
-void Bureaucrat::setGrade(int grad){
-    this->grad = grad;
-}
 
 void Bureaucrat::IncrementGrade() {
     if (this->grad - 1 < 1)

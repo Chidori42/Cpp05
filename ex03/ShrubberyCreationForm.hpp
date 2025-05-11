@@ -16,9 +16,9 @@
 #include "Bureaucrat.hpp"
 #include <fstream>
 #include <string>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form{
+class ShrubberyCreationForm : public AForm{
     private:
       std::string target;
     public:
@@ -29,7 +29,7 @@ class ShrubberyCreationForm : public Form{
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         void execute(Bureaucrat const & executor) const;
         void CreateFileForm() const;
-        static  Form* create(std::string target);
+        static  AForm* create(std::string target);
 
         std::string getTarget() const;
 

@@ -34,7 +34,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
         throw FormNotSignedException();
     }
     if (executor.getGrade() == 45 && this->getGradsign() == 72){
-        if (rand() % 2 == 1){
+        if (std::time(0) % 2 == 1){
             std::cout << "Beeeeeep boop beep! " << this->getTarget()
                 << " is being robotomized..." << std::endl;
         }

@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:28:45 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/16 22:26:16 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:48:45 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm{
-    private:
-      std::string target;
     public:
         RobotomyRequestForm(std::string target);
         ~RobotomyRequestForm();
@@ -30,16 +28,6 @@ class RobotomyRequestForm : public AForm{
         RobotomyRequestForm &operator=(RobotomyRequestForm const &other);
         void execute(Bureaucrat const & executor) const;
 
-        std::string getTarget() const;
-        class GradeTooHighException: public std::exception{
-          public:
-            const char* what() const throw();
-        };
-        
-        class GradeTooLowException: public std::exception{
-          public:
-            const char* what() const throw();
-        };
         class FormNotSignedException: public std::exception{
             public:
                 const char* what() const throw();

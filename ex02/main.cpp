@@ -8,7 +8,7 @@ int main(){
     try{
         Bureaucrat br("Ael-Fagr", 1);
         Bureaucrat br2("Ael-Fagr", 150);
-        ShrubberyCreationForm form("target");
+        ShrubberyCreationForm form("Wati9a");
         form.beSigned(br);
         std::cout << form << std::endl;
         br.executeForm(form);

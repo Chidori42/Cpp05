@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:46:23 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/11 22:41:06 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:49:30 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Form::beSigned(Bureaucrat br){
     if (br.getGrade() <= getGradsign())
         this->wassigned = true;
     else
-        throw GradeTooLowException();
+        throw GradeTooHighException();
 }
 
 const char *Form::GradeTooHighException::what() const throw(){

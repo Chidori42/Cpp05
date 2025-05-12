@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 00:01:41 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/18 16:30:08 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:32:18 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ AForm* Intern::makeForm(std::string formName, std::string formTarget) {
     if (!form) {
         throw FormNotFoundException();
     }
-    std::cout << "Intern creates " << form->getname() << std::endl;
+    std::cout << "Intern creates " << form->getName() << std::endl;
     return form;
 }
 

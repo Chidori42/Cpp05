@@ -28,7 +28,7 @@ AForm::AForm(std::string name, int gradsign, int gradexecute): name(name), wassi
         throw GradeTooHighException();
 }
 
-std::string AForm::getname() const{
+std::string AForm::getName() const{
     return (this->name);
 }
 bool AForm::getWassigned() const{
@@ -60,7 +60,7 @@ const char *AForm::GradeTooLowException::what() const throw(){
     return "The AForm Grade Is To Low";
 }
 std::ostream &operator<<(std::ostream &os, AForm const &other){
-    os << "AForm: " << other.getname() << ", Grade to sign: " << other.getGradsign()
+    os << "AForm: " << other.getName() << ", Grade to sign: " << other.getGradsign()
        << ", Grade to execute: " << other.getGradexecute() << ", Is signed: " 
        << (other.getWassigned() ? "Yes" : "No");
     return os;

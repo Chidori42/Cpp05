@@ -26,7 +26,7 @@ class AForm{
         ~AForm();
         AForm(std::string name, int gradsign, int gradexecute);
         
-        std::string getname() const;
+        std::string getName() const;
         bool getWassigned() const;
         int getGradsign() const;
         int getGradexecute() const;

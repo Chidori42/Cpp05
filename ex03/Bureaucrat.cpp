@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:54:35 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/18 16:48:25 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:32:12 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void Bureaucrat::DecrementGrade() {
 void Bureaucrat::signForm(AForm &f){
     try {
         f.beSigned(*this);
-        std::cout << this->getName() << " signed " << f.getname() << std::endl;
+        std::cout << this->getName() << " signed " << f.getName() << std::endl;
     } catch (const std::exception &e) {
-        std::cout << this->getName() << " couldn't sign " << f.getname()
+        std::cout << this->getName() << " couldn't sign " << f.getName()
                   << " because " << e.what() << std::endl;
     }
 }
@@ -82,9 +82,9 @@ void Bureaucrat::executeForm(AForm const & form)
 {
     try {
         form.execute(*this);
-        std::cout << this->getName() << " executed " << form.getname() << std::endl;
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
     } catch (const std::exception &e) {
-        std::cout << this->getName() << " couldn't execute " << form.getname()
+        std::cout << this->getName() << " couldn't execute " << form.getName()
                   << " because " << e.what() << std::endl;
     }
 }
@@ -95,4 +95,3 @@ const char *Bureaucrat::GradeTooHighException::what() const throw(){
 const char *Bureaucrat::GradeTooLowException::what() const throw(){
     return "The Grade Is To Low";
 }
-

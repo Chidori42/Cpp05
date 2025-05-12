@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:29:26 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/17 16:31:42 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:46:12 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 #include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm{
-  private:
-      std::string target;
     public:
         PresidentialPardonForm(std::string target);
         ~PresidentialPardonForm();
@@ -29,17 +27,6 @@ class PresidentialPardonForm : public AForm{
         static AForm* create(std::string target);
         void execute(Bureaucrat const & executor) const;
 
-        std::string getTarget() const;
-
-        class GradeTooHighException: public std::exception{
-          public:
-            const char* what() const throw();
-        };
-        
-        class GradeTooLowException: public std::exception{
-          public:
-            const char* what() const throw();
-        };
         class FormNotSignedException: public std::exception{
           public:
               const char* what() const throw();

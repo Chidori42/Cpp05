@@ -8,7 +8,7 @@ SRCS =	main.cpp\
 		Intern.cpp
 		
 
-NAME = Make_Forms
+NAME = AForm_upgrade
 
 OBJECTS = $(SRCS:.cpp=.o)
 
@@ -16,7 +16,7 @@ RM = rm -f
 
 all: $(NAME)
 
-%.o: %.cpp  AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp Intern.hpp
+%.o: %.cpp  Intern.hpp AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 	c++ $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJECTS)

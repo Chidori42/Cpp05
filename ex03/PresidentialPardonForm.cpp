@@ -6,13 +6,13 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:13:56 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/17 16:31:33 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:46:37 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): target(target){
+PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm(target, 5, 25){
     
 }
 PresidentialPardonForm::~PresidentialPardonForm(){
@@ -30,25 +30,18 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
     if (AForm::getWassigned() == false)
         throw FormNotSignedException();
-    if (executor.getGrade() > 25 || this->getGradexecute() > 5)
+    if (executor.getGrade() > 150)
         throw GradeTooLowException();
-    std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+    else if (executor.getGrade() < 1)
+        throw GradeTooHighException();
+    std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
-std::string PresidentialPardonForm::getTarget() const{
-    return (this->target);
-}
 
 AForm* PresidentialPardonForm::create(std::string target) {
     return new PresidentialPardonForm(target);
 }
 
-const char *PresidentialPardonForm::GradeTooHighException::what() const throw(){
-    return "The PresidentialPardonForm Grade Is To High";
-}
-const char *PresidentialPardonForm::GradeTooLowException::what() const throw(){
-    return "The PresidentialPardonForm Grade Is To Low";
-}
 const char *PresidentialPardonForm::FormNotSignedException::what() const throw(){
     return "The PresidentialPardonForm Is Not Signed";
 }

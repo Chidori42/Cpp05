@@ -8,9 +8,9 @@
 int main(){
     try{
         Intern someRandomIntern;
-        Bureaucrat executor("lhaj l3arbi", 2);
+        Bureaucrat executor("lhaj l3arbi", 1);
         AForm* rrf;
-        rrf = someRandomIntern.makeForm("robotomy reques", "Bender");
+        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
         rrf->beSigned(executor);
         rrf->execute(executor);
     }

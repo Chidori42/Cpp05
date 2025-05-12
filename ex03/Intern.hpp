@@ -6,7 +6,7 @@
 /*   By: ael-fagr <ael-fagr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 22:05:13 by ael-fagr          #+#    #+#             */
-/*   Updated: 2025/04/17 16:34:26 by ael-fagr         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:32:04 by ael-fagr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ class Intern
         Intern();
         Intern(Intern const &other);
         ~Intern();
+
         Intern &operator=(Intern const &other);
         AForm *makeForm(std::string formName, std::string target);
+
         class FormNotFoundException : public std::exception
         {
             public:
